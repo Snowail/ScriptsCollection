@@ -60,10 +60,11 @@ mkdir /etc/nginx/global
 wget -O /etc/nginx/global/cf_ipv4.txt https://www.cloudflare.com/ips-v4
 wget -O /etc/nginx/global/cf_ipv6.txt https://www.cloudflare.com/ips-v6
 cat /etc/nginx/global/cf_ipv4.txt > /etc/nginx/global/cf.conf 
-cat /etc/nginx/global/cf_ipv6 >> /etc/nginx/global/cf.conf
+echo  \ >> /etc/nginx/global/cf.conf
+cat /etc/nginx/global/cf_ipv6.txt >> /etc/nginx/global/cf.conf
 sed -i "s/^/allow /g" /etc/nginx/global/cf.conf
 
 # 其他配置
-wget -O /etc/nginx/global/fastcgi_timeout.conf https://raw.githubusercontent.com/Snowail/ScriptsCollection/main/nginx_global/fastcgi_timeout.conf?token=GHSAT0AAAAAACHSZY73Z5CK5FAWXR4JDIPYZIDBYCQ
-wget -O /etc/nginx/global/restrictions.conf https://raw.githubusercontent.com/Snowail/ScriptsCollection/main/nginx_global/restrictions.conf?token=GHSAT0AAAAAACHSZY72U74GJDI3EN6QGT3CZIDB2XQ
-wget -O /etc/nginx/global/supercache.conf https://raw.githubusercontent.com/Snowail/ScriptsCollection/main/nginx_global/supercache.conf?token=GHSAT0AAAAAACHSZY72VD25KFKWKOBQE2PCZIDB2DQ
+wget -O /etc/nginx/global/fastcgi_timeout.conf https://raw.githubusercontent.com/Snowail/ScriptsCollection/main/nginx_global/fastcgi_timeout.conf
+wget -O /etc/nginx/global/restrictions.conf https://raw.githubusercontent.com/Snowail/ScriptsCollection/main/nginx_global/restrictions.conf
+wget -O /etc/nginx/global/supercache.conf https://raw.githubusercontent.com/Snowail/ScriptsCollection/main/nginx_global/supercache.conf
