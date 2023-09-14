@@ -11,11 +11,11 @@ export PATH
 export PHPVER=8.1
 
 # 更新软件源
-apt update && apt upgrad
+apt update && apt upgrade
 # 安装软件源拓展工具
 apt -y install software-properties-common apt-transport-https lsb-release ca-certificates
 # 安装LNMP
-apt install nginx php$PHPVER-fpm php$PHPVER-curl php$PHPVER-gd php$PHPVER-gmp php$PHPVER-imap php$PHPVER-mbstring php$PHPVER-mysql php$PHPVER-sqlite3 php$PHPVER-intl php$PHPVER-imagick php$PHPVER-xml php$PHPVER-xmlrpc php$PHPVER-zip php$PHPVER-bcmath php$PHPVER-redis redis imagemagick mariadb-server mariadb-client
+apt -y install nginx php$PHPVER-fpm php$PHPVER-curl php$PHPVER-gd php$PHPVER-gmp php$PHPVER-imap php$PHPVER-mbstring php$PHPVER-mysql php$PHPVER-sqlite3 php$PHPVER-intl php$PHPVER-imagick php$PHPVER-xml php$PHPVER-xmlrpc php$PHPVER-zip php$PHPVER-bcmath php$PHPVER-redis redis imagemagick mariadb-server mariadb-client
 
 #编辑php.ini配置
 # 修改限制
