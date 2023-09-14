@@ -64,6 +64,7 @@ echo  \ >> /etc/nginx/global/cf.conf
 cat /etc/nginx/global/cf_ipv6.txt >> /etc/nginx/global/cf.conf
 sed -i "s/^/allow /g" /etc/nginx/global/cf.conf
 sed -i "s/$/&;/g" /etc/nginx/global/cf.conf
+rm /etc/nginx/global/*.txt
 
 # 其他配置
 wget -O /etc/nginx/global/fastcgi_timeout.conf https://raw.githubusercontent.com/Snowail/ScriptsCollection/main/nginx_global/fastcgi_timeout.conf
