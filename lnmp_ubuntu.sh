@@ -70,3 +70,40 @@ rm /etc/nginx/global/*.txt
 wget -O /etc/nginx/global/fastcgi_timeout.conf https://raw.githubusercontent.com/Snowail/ScriptsCollection/main/nginx_global/fastcgi_timeout.conf
 wget -O /etc/nginx/global/restrictions.conf https://raw.githubusercontent.com/Snowail/ScriptsCollection/main/nginx_global/restrictions.conf
 wget -O /etc/nginx/global/supercache.conf https://raw.githubusercontent.com/Snowail/ScriptsCollection/main/nginx_global/supercache.conf
+
+# 自动维护journal大小 只保留最近一周的日志
+journalctl --vacuum-time=1w
+
+# 防止ssh暴力破解
+apt install iptables fail2ban
+
+cat > /etc/fail2ban/jail.local << EOF
+[DEFAULT]
+# 以空格分隔的列表，可以是 IP 地址、CIDR 前缀或者 DNS 主机名
+# 用于指定哪些地址可以忽略 fail2ban 防御
+ignoreip = 127.0.0.1 172.31.0.0/24 10.10.0.0/24 192.168.0.0/24
+ 
+# 客户端主机被禁止的时长（秒）
+bantime = 86400
+ 
+# 客户端主机被禁止前允许失败的次数 
+maxretry = 5
+ 
+# 查找失败次数的时长（秒）
+findtime = 600
+ 
+mta = sendmail
+ 
+[ssh-iptables]
+enabled = true
+filter = sshd
+action = iptables[name=SSH, port=ssh, protocol=tcp]
+sendmail-whois[name=SSH, dest=yukine@snowail.me, sender=fail2ban@email.com]
+# Debian 系的发行版 
+logpath = /var/log/auth.log
+# ssh 服务的最大尝试次数 
+maxretry = 3
+EOF
+
+service fail2ban restart
+fail2ban-client ping
