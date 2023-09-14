@@ -51,7 +51,7 @@ chmod -R 755 /var/www
 # 配置NGINX
 sed -i "s/^.*worker_connections.*$/worker_connections 1024;/" /etc/nginx/nginx.conf
 sed -i '23 i \    client_max_body_size 0;' /etc/nginx/nginx.conf
-sed -i "33 i \    upstream php {\n      server unix:/run/php/php$PHPVER-fpm.sock\n}" /etc/nginx/nginx.conf
+sed -i "33 i \    upstream php {\n      server unix:/run/php/php$PHPVER-fpm.sock;\n    }" /etc/nginx/nginx.conf
 
 # 创建通用配置目录
 mkdir /etc/nginx/cert
