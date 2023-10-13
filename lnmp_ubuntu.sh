@@ -75,7 +75,7 @@ wget -O /etc/nginx/global/supercache.conf https://raw.githubusercontent.com/Snow
 journalctl --vacuum-time=1w
 
 # 防止ssh暴力破解
-apt install iptables fail2ban
+apt -y install iptables fail2ban
 
 cat > /etc/fail2ban/jail.local << EOF
 [DEFAULT]
