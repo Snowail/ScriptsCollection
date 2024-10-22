@@ -8,7 +8,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
 # 指定php版本
-export PHPVER=8.1
+export PHPVER=8.3
 
 # 更新软件源
 apt update && apt upgrade
